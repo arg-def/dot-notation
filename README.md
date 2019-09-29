@@ -1,4 +1,4 @@
-# @args-def/dot-notation
+# @arg-def/dot-notation
 
 > Object readings and transformations using dot notation syntax
 
@@ -16,9 +16,9 @@
 ## Installation
 
 ```sh
-npm install @args-def/dot-notation --save
+npm install @arg-def/dot-notation --save
 #or
-yarn add @args-def/dot-notation
+yarn add @arg-def/dot-notation
 ```
 
 ## How to use
