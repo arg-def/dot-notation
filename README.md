@@ -160,11 +160,11 @@ dot.parseKey(source, value);
 [npm-downloads]: https://img.shields.io/npm/dm/@arg-def/dot-notation.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[stars-image]: https://img.shields.io/github/stars/args-def/dot-notation.svg
-[stars-url]: https://github.com/args-def/dot-notation/stargazers
-[vulnerabilities-image]: https://snyk.io/test/github/args-def/dot-notation/badge.svg
-[vulnerabilities-url]: https://snyk.io/test/github/args-def/dot-notation
-[issues-image]: https://img.shields.io/github/issues/args-def/dot-notation.svg
-[issues-url]: https://github.com/args-def/dot-notation/issues
+[stars-image]: https://img.shields.io/github/stars/arg-def/dot-notation.svg
+[stars-url]: https://github.com/arg-def/dot-notation/stargazers
+[vulnerabilities-image]: https://snyk.io/test/github/arg-def/dot-notation/badge.svg
+[vulnerabilities-url]: https://snyk.io/test/github/arg-def/dot-notation
+[issues-image]: https://img.shields.io/github/issues/arg-def/dot-notation.svg
+[issues-url]: https://github.com/arg-def/dot-notation/issues
 [awesome-image]: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
 [awesome-url]: https://github.com/themgoncalves/react-loadable-ssr-addon
