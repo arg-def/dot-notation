@@ -1,5 +1,3 @@
-import { IKeySource } from 'interfaces';
-
 import merge from './merge';
 
 describe('utils/merge()', () => {

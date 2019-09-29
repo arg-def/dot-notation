@@ -1,4 +1,4 @@
-import { IKeyFromPathResult } from 'interfaces';
+import { IKeyFromPathResult } from '../interfaces';
 
 import replace from './replace';
 import getArrayIndex from './get-array-index';

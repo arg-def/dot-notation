@@ -69,6 +69,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/unambiguous': 'off',
     'import/no-useless-path-segments': 'off',
+    'no-unused-vars': 'error',
     'no-cond-assign': ['error', 'except-parens'],
     'prettier/prettier': ['error'],
     '@typescript-eslint/explicit-function-return-type': [

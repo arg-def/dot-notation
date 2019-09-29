@@ -1,5 +1,5 @@
 import pick from './pick';
-import { IKeySource } from 'interfaces';
+import { IKeySource } from './interfaces';
 
 const source: IKeySource = {
   person: {

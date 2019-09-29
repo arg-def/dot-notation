@@ -1,4 +1,4 @@
-import { IKeySource } from 'interfaces';
+import { IKeySource } from '../interfaces';
 
 /* eslint-disable no-param-reassign */
 const merge = (source: IKeySource, target: IKeySource): object => {

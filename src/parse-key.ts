@@ -1,5 +1,4 @@
-import { IKeySource } from 'interfaces';
-
+import { IKeySource } from './interfaces';
 import getKey from './utils/get-key';
 
 /**

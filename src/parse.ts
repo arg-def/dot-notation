@@ -1,9 +1,8 @@
-import { IKeySource } from 'interfaces';
-
 import pick from './pick';
 import parseKey from './parse-key';
 import merge from './utils/merge';
 import getArrayIndex from './utils/get-array-index';
+import { IKeySource } from './interfaces';
 
 /**
  * Parse object from dot notation
