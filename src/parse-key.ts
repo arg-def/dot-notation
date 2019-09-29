@@ -1,3 +1,5 @@
+import { IKeySource } from 'interfaces';
+
 import getKey from './utils/get-key';
 
 /**
@@ -7,7 +9,7 @@ import getKey from './utils/get-key';
  * @returns {object}
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const parseKey = (dotNotationPath: string, value: any): object => {
+const parseKey = (dotNotationPath: string, value: any): IKeySource => {
   const { key, path, isArray } = getKey(dotNotationPath);
   const done = !path;
   const mountObject = (): object => (done ? value : parseKey(path, value));

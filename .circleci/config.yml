@@ -59,20 +59,30 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./.npmrc
-      - run: npm publish --access public
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./.npmrc
+      - run:
+          name: Publish package
+          command: npm publish --access public
 
 workflows:
   version: 2
-  main:
+  test-build-deploy:
     jobs:
       - install
       - lint:
           requires:
             - install
+          filters:
+            tags:
+              only: /^v.*/
       - test:
           requires:
             - install
+          filters:
+            tags:
+              only: /^v.*/
       - build:
           requires:
             - install
@@ -80,7 +90,6 @@ workflows:
           requires:
             - test
             - lint
-            - build
           filters:
             tags:
               only: /^v.*/

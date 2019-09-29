@@ -12,6 +12,7 @@ import getArrayIndex from './utils/get-array-index';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const pick = (path: string, source: IKeySource): any =>
   path.split('.').reduce((acc, key) => {
+    if (!acc) return acc;
     const match = getArrayIndex(key);
 
     if (match) {
@@ -21,11 +22,13 @@ export const pick = (path: string, source: IKeySource): any =>
         throw new SyntaxError(`An array index was expected but nothing was found at "${path}"`);
       }
 
+      if (+index < 0) {
+        throw new RangeError(`Array index must equal or higher than 0, but instead got "${index}"`);
+      }
+
       const k = key.replace(value, '');
       return acc[k][index];
     }
-
-    if (!acc) return acc;
 
     return acc[key];
   }, source);

@@ -30,7 +30,13 @@ describe('pick()', () => {
   it('should throw an error when no array index is present', () => {
     const path = 'person.address[].street';
 
-    expect(() => pick(path, source)).toThrow();
+    expect(() => pick(path, source)).toThrow(SyntaxError);
+  });
+
+  it('should throw an error array index is lower than 0', () => {
+    const path = 'person.address[-1].street';
+
+    expect(() => pick(path, source)).toThrow(RangeError);
   });
 
   it('should return undefined when dot notation is a typo or dont exists', () => {

@@ -55,6 +55,7 @@ dot.pick('person.address[0].street', source);
 
 ### Parsing an object
 
+#### Conventional parsing
 
 ```js
 import dot from '@arg-def/dot-notation';
@@ -88,6 +89,49 @@ dot.parse(source);
 */
 ```
 
+#### With multiple array items
+
+```js
+import dot from '@arg-def/dot-notation';
+
+const source = {
+  'person.name.firstName': 'John',
+  'person.name.lastName': 'Doe',
+  'person.address[0].street': 'Infinite Loop',
+  'person.address[0].city': 'Cupertino',
+  'person.address[0].postalCode': 95014,
+  'person.address[1].street': '1600 Amphitheatre',
+  'person.address[1].city': 'Mountain View',
+  'person.address[1].postalCode': 94043,
+};
+
+
+dot.parse(source);
+
+
+/* outputs
+{
+  person: {
+    name: {
+      firstName: 'John',
+      lastName: 'Doe',
+    },
+    address: [
+      {
+        street: 'Infinite Loop',
+        city: 'Cupertino',
+        postalCode: 95014,
+      },
+      {
+        street: 'g1600 Amphitheatre',
+        city: 'Mountain View',
+        postalCode: 94043,
+      },
+    ],
+  },
+}
+*/
+```
 
 ### Parsing single key
 
@@ -111,9 +155,9 @@ dot.parseKey(source, value);
 
 
 <!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/@args-def/dot-notation.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@args-def/dot-notation
-[npm-downloads]: https://img.shields.io/npm/dm/@args-def/dot-notation.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/@arg-def/dot-notation.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@arg-def/dot-notation
+[npm-downloads]: https://img.shields.io/npm/dm/@arg-def/dot-notation.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [stars-image]: https://img.shields.io/github/stars/args-def/dot-notation.svg
