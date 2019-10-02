@@ -35,15 +35,6 @@ describe('utils/merge()', () => {
     expect(merge(source, target)).toStrictEqual(expects);
   });
 
-  it('should merge simple nested object array', () => {
-    const source = { name: 'John', hobbies: ['barbecue'] };
-    const target = { lastName: 'Doe', hobbies: ['movie'] };
-
-    const expects = { name: 'John', lastName: 'Doe', hobbies: ['barbecue', 'movie'] };
-
-    expect(merge(source, target)).toStrictEqual(expects);
-  });
-
   it('should merge complex nested object array', () => {
     const source = {
       person: { name: 'John', random: ['bacon', 1, { language: 'javascript' }, true] },
