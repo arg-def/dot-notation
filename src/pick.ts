@@ -8,8 +8,7 @@ import getArrayIndex from './utils/get-array-index';
  * @param {object} source
  * @returns {*} value
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const pick = (path: string, source: IKeySource): any =>
+export const pick = <T>(path: string, source: IKeySource): T =>
   path.split('.').reduce((acc, key) => {
     if (!acc) return acc;
     const match = getArrayIndex(key);
@@ -30,6 +29,6 @@ export const pick = (path: string, source: IKeySource): any =>
     }
 
     return acc[key];
-  }, source);
+  }, source) as T;
 
 export default pick;

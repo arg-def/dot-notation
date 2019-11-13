@@ -5,45 +5,76 @@ describe('utils/merge()', () => {
     const source = [1, 2, 3];
     const target = [4, 5, 6];
 
-    expect(merge(source, target)).toStrictEqual(source);
+    expect(merge<number[]>(source, target)).toStrictEqual(source);
   });
 
   it('should merge simple object', () => {
+    interface IMerge {
+      name: string;
+      lastName: string;
+    }
+
     const source = { name: 'John' };
     const target = { lastName: 'Doe' };
 
     const expects = { ...source, ...target };
 
-    expect(merge(source, target)).toStrictEqual(expects);
+    expect(merge<IMerge>(source, target)).toStrictEqual(expects);
   });
 
   it('should merge deep object', () => {
-    const source = { earth: { human: { person: { name: 'John' } } } };
-    const target = { earth: { human: { person: { lastName: 'Doe' } } } };
+    interface IMerge {
+      earth: {
+        human: {
+          person: {
+            name?: string;
+            lastName?: string;
+          };
+        };
+      };
+    }
+
+    const source: IMerge = { earth: { human: { person: { name: 'John' } } } };
+    const target: IMerge = { earth: { human: { person: { lastName: 'Doe' } } } };
 
     const expects = { earth: { human: { person: { name: 'John', lastName: 'Doe' } } } };
 
-    expect(merge(source, target)).toStrictEqual(expects);
+    expect(merge<IMerge>(source, target)).toStrictEqual(expects);
   });
 
   it('should merge simple nested object array', () => {
-    const source = { name: 'John', hobbies: ['barbecue'] };
-    const target = { lastName: 'Doe', hobbies: ['movie'] };
+    interface IMerge {
+      name?: string;
+      lastName?: string;
+      hobbies: string[];
+    }
 
-    const expects = { name: 'John', lastName: 'Doe', hobbies: ['barbecue', 'movie'] };
+    const source: IMerge = { name: 'John', hobbies: ['barbecue'] };
+    const target: IMerge = { lastName: 'Doe', hobbies: ['movie'] };
 
-    expect(merge(source, target)).toStrictEqual(expects);
+    const expects: IMerge = { name: 'John', lastName: 'Doe', hobbies: ['barbecue', 'movie'] };
+
+    expect(merge<IMerge>(source, target)).toStrictEqual(expects);
   });
 
   it('should merge complex nested object array', () => {
-    const source = {
+    interface IMerge {
+      person: {
+        name?: string;
+        lastName?: string;
+        random: (string | number | object | boolean)[];
+      };
+    }
+
+    const source: IMerge = {
       person: { name: 'John', random: ['bacon', 1, { language: 'javascript' }, true] },
     };
-    const target = {
+
+    const target: IMerge = {
       person: { lastName: 'Doe', random: ['cheeseburger', 2, { ide: 'webstorm' }, false] },
     };
 
-    const expects = {
+    const expects: IMerge = {
       person: {
         name: 'John',
         lastName: 'Doe',
@@ -51,21 +82,26 @@ describe('utils/merge()', () => {
       },
     };
 
-    expect(merge(source, target)).toStrictEqual(expects);
+    expect(merge<IMerge>(source, target)).toStrictEqual(expects);
   });
 
   it('should merge uneven objects', () => {
-    const source = {
+    interface IMerge {
+      hobbies: string[];
+    }
+
+    const source: IMerge = {
       hobbies: ['barbecue'],
     };
-    const target = {
+
+    const target: IMerge = {
       hobbies: ['movie', 'coding'],
     };
 
-    const expects = {
+    const expects: IMerge = {
       hobbies: ['barbecue', 'movie', 'coding'],
     };
 
-    expect(merge(source, target)).toStrictEqual(expects);
+    expect(merge<IMerge>(source, target)).toStrictEqual(expects);
   });
 });

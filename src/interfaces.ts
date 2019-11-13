@@ -5,5 +5,5 @@ export interface IKeyFromPathResult {
 }
 
 export interface IKeySource {
-  [index: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  [index: string]: any | ThisType<IKeySource>; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
