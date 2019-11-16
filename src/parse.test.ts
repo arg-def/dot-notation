@@ -1,5 +1,19 @@
 import parse from './parse';
 
+interface IParse {
+  person: {
+    name: {
+      firstName: string;
+      lastName: string;
+    };
+    address: {
+      street: string;
+      city: string;
+      postalCode: number;
+    }[];
+  };
+}
+
 describe('parse()', () => {
   it('should throw an error when array index jumps place', () => {
     const source = {
@@ -10,7 +24,7 @@ describe('parse()', () => {
       'person.address[4].postalCode': 95014,
     };
 
-    expect(() => parse(source)).toThrow(RangeError);
+    expect(() => parse<IParse>(source)).toThrow(RangeError);
   });
   it('should parse object', () => {
     const source = {
@@ -21,7 +35,7 @@ describe('parse()', () => {
       'person.address[].postalCode': 95014,
     };
 
-    expect(parse(source)).toStrictEqual({
+    expect(parse<IParse>(source)).toStrictEqual({
       person: {
         name: {
           firstName: 'John',
@@ -35,7 +49,7 @@ describe('parse()', () => {
           },
         ],
       },
-    });
+    } as IParse);
   });
 
   it('should parse object with array indexes', () => {
@@ -50,7 +64,7 @@ describe('parse()', () => {
       'person.address[1].postalCode': 94043,
     };
 
-    expect(parse(source)).toStrictEqual({
+    expect(parse<IParse>(source)).toStrictEqual({
       person: {
         name: {
           firstName: 'John',
@@ -69,6 +83,6 @@ describe('parse()', () => {
           },
         ],
       },
-    });
+    } as IParse);
   });
 });

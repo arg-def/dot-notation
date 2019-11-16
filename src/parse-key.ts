@@ -1,4 +1,3 @@
-import { IKeySource } from './interfaces';
 import getKey from './utils/get-key';
 
 /**
@@ -7,15 +6,14 @@ import getKey from './utils/get-key';
  * @param {any} value - Dot notation path value
  * @returns {object}
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const parseKey = (dotNotationPath: string, value: any): IKeySource => {
+const parseKey = <T, V>(dotNotationPath: string, value: V): T => {
   const { key, path, isArray } = getKey(dotNotationPath);
   const done = !path;
-  const mountObject = (): object => (done ? value : parseKey(path, value));
+  const mountObject = (): Partial<T> => (done ? value : parseKey<T, V>(path, value));
 
-  return {
+  return ({
     [key]: isArray ? [mountObject()] : mountObject(),
-  };
+  } as unknown) as T;
 };
 
 export default parseKey;

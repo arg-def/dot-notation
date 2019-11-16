@@ -30,21 +30,21 @@ describe('pick()', () => {
   it('should throw an error when no array index is present', () => {
     const path = 'person.address[].street';
 
-    expect(() => pick(path, source)).toThrow(SyntaxError);
+    expect(() => pick<string>(path, source)).toThrow(SyntaxError);
   });
 
   it('should throw an error array index is lower than 0', () => {
     const path = 'person.address[-1].street';
 
-    expect(() => pick(path, source)).toThrow(RangeError);
+    expect(() => pick<string>(path, source)).toThrow(RangeError);
   });
 
   it('should return undefined when dot notation is a typo or dont exists', () => {
     const pathDontExists = 'person.hobbies';
     const pathHasATypo = 'person.adddress';
 
-    expect(pick(pathDontExists, source)).toBe(undefined);
-    expect(pick(pathHasATypo, source)).toBe(undefined);
+    expect(pick<string>(pathDontExists, source)).toBe(undefined);
+    expect(pick<string>(pathHasATypo, source)).toBe(undefined);
   });
 
   it('should return string value from correct dot notation path', () => {
@@ -56,7 +56,7 @@ describe('pick()', () => {
     };
 
     Object.keys(paths).forEach(key => {
-      expect(pick(key, source)).toStrictEqual(paths[key]);
+      expect(pick<string | number>(key, source)).toStrictEqual(paths[key]);
     });
   });
 });
