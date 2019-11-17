@@ -3,12 +3,14 @@
 > Object readings and transformations using dot notation syntax
 
 [![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][circleci-image]][circleci-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 [![GitHub stars][stars-image]][stars-url]
 [![Known Vulnerabilities][vulnerabilities-image]][vulnerabilities-url]
 [![GitHub issues][issues-image]][issues-url]
 [![Awesome][awesome-image]][awesome-url]
+[![install size][install-size-image]][install-size-url]
+[![gzip size][gzip-size-image]][gzip-size-url]
 
 
 ![](dot-notation.png)
@@ -158,8 +160,8 @@ dot.parseKey(source, value);
 [npm-image]: https://img.shields.io/npm/v/@arg-def/dot-notation.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/@arg-def/dot-notation
 [npm-downloads]: https://img.shields.io/npm/dm/@arg-def/dot-notation.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[circleci-image]: https://circleci.com/gh/arg-def/dot-notation.svg?style=svg
+[circleci-url]: https://circleci.com/gh/arg-def/dot-notation
 [stars-image]: https://img.shields.io/github/stars/arg-def/dot-notation.svg
 [stars-url]: https://github.com/arg-def/dot-notation/stargazers
 [vulnerabilities-image]: https://snyk.io/test/github/arg-def/dot-notation/badge.svg
@@ -167,4 +169,8 @@ dot.parseKey(source, value);
 [issues-image]: https://img.shields.io/github/issues/arg-def/dot-notation.svg
 [issues-url]: https://github.com/arg-def/dot-notation/issues
 [awesome-image]: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
-[awesome-url]: https://github.com/themgoncalves/react-loadable-ssr-addon
+[awesome-url]: https://github.com/@arg-def/dot-notation
+[install-size-image]: https://packagephobia.now.sh/badge?p=@arg-def/dot-notation
+[install-size-url]: https://packagephobia.now.sh/result?p=@arg-def/dot-notation
+[gzip-size-image]: http://img.badgesize.io/https://unpkg.com/@arg-def/dot-notation/lib/dot-notation.min.js?compression=gzip
+[gzip-size-url]: https://unpkg.com/@arg-def/dot-notation/lib/dot-notation.min.js
