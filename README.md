@@ -15,6 +15,12 @@
 
 ![](dot-notation.png)
 
+## Demo
+
+Play around with _dot-notation_ and experience **the magic**!
+
+[![Edit @arg-def/dot-notation](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/arg-defdot-notation-td636?fontsize=14&hidenavigation=1&theme=dark)
+
 ## Installation
 
 ```sh
