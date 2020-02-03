@@ -1,6 +1,6 @@
 {
   "name": "@arg-def/dot-notation",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Object readings and transformations using dot notation syntax",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
