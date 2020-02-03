@@ -1,10 +1,10 @@
-import { IKeySource } from '../interfaces';
+import { IKeySource, IKeyFromPathResult } from '../interfaces';
 
 import getKey from './get-key';
 
 describe('utils/getKey()', () => {
   it('should return the correct key, path and array flag', () => {
-    const paths: IKeySource = {
+    const paths: IKeySource<IKeyFromPathResult> = {
       'person.name.firstName': {
         key: 'person',
         path: 'name.firstName',

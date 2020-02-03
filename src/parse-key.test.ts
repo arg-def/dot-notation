@@ -10,7 +10,7 @@ describe('parseKey()', () => {
     const value = 'John';
     const expects: IPersonPath = { person: { name: { firstName: value } } };
 
-    expect(parseKey<IPersonPath, string>(path, value)).toStrictEqual(expects);
+    expect(parseKey<IPersonPath>(path, value)).toStrictEqual(expects);
   });
 
   it('should parse path with array', () => {
@@ -22,7 +22,7 @@ describe('parseKey()', () => {
     const value = '1600 Amphitheatre';
     const expects: IPersonPathArray = { person: { address: [{ street: value }] } };
 
-    expect(parseKey<IPersonPathArray, string>(path, value)).toStrictEqual(expects);
+    expect(parseKey<IPersonPathArray>(path, value)).toStrictEqual(expects);
   });
 
   it('should parse path even with array index', () => {
@@ -34,7 +34,7 @@ describe('parseKey()', () => {
     const value = '1600 Amphitheatre';
     const expects: IPersonPathArray = { person: { address: [{ street: value }] } };
 
-    expect(parseKey<IPersonPathArray, string>(path, value)).toStrictEqual(expects);
+    expect(parseKey<IPersonPathArray>(path, value)).toStrictEqual(expects);
   });
 
   it('should parse path even with weird key char', () => {
@@ -46,6 +46,6 @@ describe('parseKey()', () => {
     const value = '1600 Amphitheatre';
     const expects: IPersonPathArray = { person: { 'address/': [{ street: value }] } };
 
-    expect(parseKey<IPersonPathArray, string>(path, value)).toStrictEqual(expects);
+    expect(parseKey<IPersonPathArray>(path, value)).toStrictEqual(expects);
   });
 });

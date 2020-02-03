@@ -1,7 +1,7 @@
 import pick from './pick';
 import { IKeySource } from './interfaces';
 
-const source: IKeySource = {
+const source = {
   person: {
     name: {
       firstName: 'John',
@@ -48,7 +48,7 @@ describe('pick()', () => {
   });
 
   it('should return string value from correct dot notation path', () => {
-    const paths: IKeySource = {
+    const paths: IKeySource<string | number> = {
       'person.name': source.person.name,
       'person.name.firstName': source.person.name.firstName,
       'person.address[0]': source.person.address[0],

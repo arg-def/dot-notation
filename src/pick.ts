@@ -8,8 +8,8 @@ import getArrayIndex from './utils/get-array-index';
  * @param {object} source
  * @returns {*} value
  */
-export const pick = <T>(path: string, source: IKeySource): T =>
-  path.split('.').reduce((acc, key) => {
+export const pick = <T>(path: string, source: IKeySource<unknown>): T =>
+  path.split('.').reduce((acc: IKeySource<T>, key: string) => {
     if (!acc) return acc;
     const match = getArrayIndex(key);
 
@@ -25,10 +25,10 @@ export const pick = <T>(path: string, source: IKeySource): T =>
       }
 
       const k = key.replace(value, '');
-      return acc[k][index];
+      return ((acc[k] as unknown) as [])[+index];
     }
 
     return acc[key];
-  }, source) as T;
+  }, source as IKeySource<T>) as T;
 
 export default pick;

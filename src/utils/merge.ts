@@ -1,20 +1,20 @@
 import { IKeySource } from '../interfaces';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isObject = (obj: any): boolean => obj instanceof Object;
+const isObject = (obj: unknown): boolean => obj instanceof Object;
 
-/* eslint-disable no-param-reassign */
 const merge = <T>(source: Partial<T>, target: Partial<T>): T => {
   if (!(isObject(source) || isObject(target))) {
     return source as T;
   }
 
+  const result = target;
+
   Object.keys(source).forEach(key => {
-    const sourceValue = (source as IKeySource)[key];
-    const targetValue = (target as IKeySource)[key];
+    const sourceValue = (source as IKeySource<unknown>)[key];
+    const targetValue = (target as IKeySource<unknown>)[key];
 
     if (Array.isArray(sourceValue) && Array.isArray(targetValue)) {
-      (target as IKeySource)[key] = [...sourceValue, ...targetValue.splice(sourceValue.length)].reduce(
+      (result as IKeySource<unknown>)[key] = [...sourceValue, ...targetValue.splice(sourceValue.length)].reduce(
         (acc, next, idx) => {
           if (isObject(next) && isObject(targetValue[idx])) {
             acc.push(merge(next, targetValue[idx]));
@@ -30,16 +30,16 @@ const merge = <T>(source: Partial<T>, target: Partial<T>): T => {
 
           return acc;
         },
-        [],
+        [] as Partial<T>[],
       );
     } else if (isObject(sourceValue) && isObject(targetValue)) {
-      (target as IKeySource)[key] = merge<T>({ ...sourceValue }, targetValue);
+      (result as IKeySource<unknown>)[key] = merge<T>({ ...(sourceValue as object) }, targetValue as object);
     } else {
-      (target as IKeySource)[key] = sourceValue;
+      (result as IKeySource<unknown>)[key] = sourceValue;
     }
   });
 
-  return target as T;
+  return result as T;
 };
 
 export default merge;

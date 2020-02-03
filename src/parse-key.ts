@@ -6,10 +6,10 @@ import getKey from './utils/get-key';
  * @param {any} value - Dot notation path value
  * @returns {object}
  */
-const parseKey = <T, V>(dotNotationPath: string, value: V): T => {
+const parseKey = <T>(dotNotationPath: string, value: unknown): T => {
   const { key, path, isArray } = getKey(dotNotationPath);
   const done = !path;
-  const mountObject = (): Partial<T> => (done ? value : parseKey<T, V>(path, value));
+  const mountObject = (): Partial<T> => (done ? (value as T) : parseKey<T>(path, value));
 
   return ({
     [key]: isArray ? [mountObject()] : mountObject(),

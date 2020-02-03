@@ -4,6 +4,6 @@ export interface IKeyFromPathResult {
   isArray: boolean;
 }
 
-export interface IKeySource {
-  [index: string]: any | ThisType<IKeySource>; // eslint-disable-line @typescript-eslint/no-explicit-any
+export interface IKeySource<T> {
+  [index: string]: T | IKeySource<T>;
 }
