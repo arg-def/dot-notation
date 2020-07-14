@@ -1,3 +1,9 @@
+## NOTICE
+
+**`@arg-def/dot-notation` has been move to [`@cookbook/dot-notation`](https://github.com/the-cookbook/dot-notation)**
+
+-------
+
 # @arg-def/dot-notation
 
 > Object readings and transformations using dot notation syntax
